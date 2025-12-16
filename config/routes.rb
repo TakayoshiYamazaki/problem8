@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'kadaikanris/export_xlsx', to: 'kadaikanris#export_xlsx'
   resources :kadaikanris
   resources :statuses
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

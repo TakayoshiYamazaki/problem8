@@ -1,6 +1,37 @@
 class KadaikanrisController < ApplicationController
   before_action :set_kadaikanri, only: %i[ show edit update destroy ]
 
+  def export_xlsx
+    @kadaikanris = Kadaikanri.all # Or use @q.result if you want to export filtered data
+
+    workbook = RubyXL::Workbook.new
+    worksheet = workbook[0]
+    worksheet.add_cell(0, 0, "番号")
+    worksheet.add_cell(0, 1, "登録日")
+    worksheet.add_cell(0, 2, "報告者")
+    worksheet.add_cell(0, 3, "場所")
+    worksheet.add_cell(0, 4, "内容")
+    worksheet.add_cell(0, 5, "対応方針")
+    worksheet.add_cell(0, 6, "ステータス")
+    worksheet.add_cell(0, 7, "作成日")
+
+    @kadaikanris.each_with_index do |kadaikanri, index|
+      row = index + 1
+      worksheet.add_cell(row, 0, kadaikanri.no)
+      worksheet.add_cell(row, 1, kadaikanri.entrydate&.strftime("%Y/%m/%d"))
+      worksheet.add_cell(row, 2, kadaikanri.reporter)
+      worksheet.add_cell(row, 3, kadaikanri.location)
+      worksheet.add_cell(row, 4, kadaikanri.content)
+      worksheet.add_cell(row, 5, kadaikanri.plan)
+      worksheet.add_cell(row, 6, kadaikanri.status.name)
+      worksheet.add_cell(row, 7, kadaikanri.created_at&.strftime("%Y/%m/%d %H:%M:%S"))
+    end
+
+    send_data workbook.stream.read,
+              type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+              filename: "kadaikanris.xlsx"
+  end
+
   # GET /kadaikanris or /kadaikanris.json
   def index
     @q = Kadaikanri.includes(:status).ransack(params[:q])

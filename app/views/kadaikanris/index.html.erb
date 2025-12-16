@@ -7,7 +7,10 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">課題管理</h1>
-    <%= link_to "新規作成", new_kadaikanri_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+    <div class="flex gap-2">
+      <%= link_to "新規作成", new_kadaikanri_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+      <%= link_to "Excel出力", kadaikanris_export_xlsx_path, class: "rounded-md px-3.5 py-2.5 bg-green-600 hover:bg-green-500 text-white block font-medium" %>
+    </div>
   </div>
 
   <div class="my-4">
