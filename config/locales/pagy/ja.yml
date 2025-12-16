@@ -1,0 +1,24 @@
+# See https://ddnexus.github.io/pagy/resources/i18n
+
+ja:
+  pagy:
+    p11n: 'OneOther'
+    aria_label:
+      nav:
+        one: "ページ"
+        other: "ページ"
+      previous: "前"
+      next: "次"
+    previous: "&lt;"
+    next: "&gt;"
+    gap: "&hellip;"
+    item_name:
+      one: "件"
+      other: "件"
+    info_tag:
+      no_count: "%{pages} ページ中 %{page} ページ"
+      no_items: "1 %{item_name} も見つかりません"
+      single_page: "%{count} %{item_name} を表示中"
+      multiple_pages: "全 %{count} 件中 %{from}-%{to} %{item_name} を表示中"
+    input_nav_js: "%{pages} ページ中 %{page_input} ページ"
+    limit_tag_js: "1ページにつき %{limit_input} %{item_name} を表示"

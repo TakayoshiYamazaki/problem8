@@ -1,30 +1,13 @@
-<div id="<%= dom_id kadaikanri %>" class="w-full sm:w-auto my-5 space-y-5">
-  <div>
-    <strong class="block font-medium mb-1">No:</strong>
-    <%= kadaikanri.no %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Entrydate:</strong>
-    <%= kadaikanri.entrydate %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Reporter:</strong>
-    <%= kadaikanri.reporter %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Location:</strong>
-    <%= kadaikanri.location %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Content:</strong>
-    <%= kadaikanri.content %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Plan:</strong>
-    <%= kadaikanri.plan %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Status:</strong>
-    <%= kadaikanri.status.name %>
-  </div>
-</div>
+<tr id="<%= dom_id kadaikanri %>">
+  <td class="whitespace-nowrap py-4 pl-2 pr-2 text-sm font-medium text-gray-900 sm:pl-2 w-20"><%= kadaikanri.no %></td>
+  <td class="whitespace-nowrap px-2 py-4 text-sm text-gray-500"><%= kadaikanri.entrydate %></td>
+  <td class="whitespace-nowrap px-2 py-4 text-sm text-gray-500"><%= kadaikanri.reporter %></td>
+  <td class="py-4 px-2 text-sm text-gray-500 w-32"><%= kadaikanri.location %></td>
+  <td class="py-4 px-2 text-sm text-gray-500 max-w-sm"><%= kadaikanri.content %></td>
+  <td class="py-4 px-2 text-sm text-gray-500 max-w-sm"><%= kadaikanri.plan %></td>
+  <td class="whitespace-nowrap py-4 px-2 text-sm text-gray-500"><%= kadaikanri.status.name %></td>
+  <td class="relative whitespace-nowrap py-4 pl-2 pr-2 text-right text-sm font-medium sm:pr-2">
+    <%= link_to "編集", edit_kadaikanri_path(kadaikanri), class: "text-blue-600 hover:text-blue-900" %> |
+    <%= button_to "削除", kadaikanri, method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "text-red-600 hover:text-red-900 inline" %>
+  </td>
+</tr>

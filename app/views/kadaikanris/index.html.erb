@@ -1,4 +1,4 @@
-<% content_for :title, "Kadaikanris" %>
+<% content_for :title, "課題管理" %>
 
 <div class="w-full">
   <% if notice.present? %>
@@ -6,24 +6,46 @@
   <% end %>
 
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Kadaikanris</h1>
-    <%= link_to "New kadaikanri", new_kadaikanri_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+    <h1 class="font-bold text-4xl">課題管理</h1>
+    <%= link_to "新規作成", new_kadaikanri_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
   </div>
 
-  <div id="kadaikanris" class="min-w-full divide-y divide-gray-200 space-y-5">
-    <% if @kadaikanris.any? %>
-      <% @kadaikanris.each do |kadaikanri| %>
-        <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
-          <%= render kadaikanri %>
-          <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
-            <%= link_to "Show", kadaikanri, class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-            <%= link_to "Edit", edit_kadaikanri_path(kadaikanri), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-            <%= button_to "Destroy", kadaikanri, method: :delete, class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
-          </div>
-        </div>
-      <% end %>
-    <% else %>
-      <p class="text-center my-10">No kadaikanris found.</p>
-    <% end %>
+  <div class="mt-8 flex flex-col">
+    <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg: -mx-8">
+      <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+	<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+	  <table class="min-w-full divide-y divide-gray-300">
+	    <thead class="bg-gray-50">
+	      <tr>
+		<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6 w-20">番号</th>
+		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">登録日</th>
+		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 w-32">場所</th>
+		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">対応方針</th>
+		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">ステータス</th>
+		<th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+		  <span class="sr-only">操作</span>
+		</th>
+	      </tr>
+	    </thead>
+	    <tbody id="kadaikanris" class="divide-y divide-gray-200 bg-white">
+	      <% if @kadaikanris.any? %>
+                <%= render @kadaikanris %>
+	      <% else %>
+	        <tr>
+		  <td colspan="8" class="text-center py-10">
+		    <p>課題管理は見つかりませんでした</p>
+		  </td>
+		</tr>
+	      <% end %>
+            </tbody>
+	  </table>
+	</div>
+      </div>
+    </div>
   </div>
+  <div class="pagy py-4 flex gap-4 [&>text]:w-8">
+    <%# Render navigation bar helpers with various types and styles %>
+    <%== @pagy.series_nav %>
+    <%== @pagy.info_tag %>
+  </dev>
 </div>

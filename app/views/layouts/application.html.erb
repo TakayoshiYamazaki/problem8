@@ -23,8 +23,12 @@
   </head>
 
   <body>
+    <%== javascript_include_tag "pagy" %>
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
+    <script>
+      window.addEventListener("load", Pagy.init);
+    </script>
   </body>
 </html>

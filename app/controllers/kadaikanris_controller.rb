@@ -3,7 +3,7 @@ class KadaikanrisController < ApplicationController
 
   # GET /kadaikanris or /kadaikanris.json
   def index
-    @kadaikanris = Kadaikanri.all
+    @pagy, @kadaikanris = pagy(:offset, Kadaikanri.all)
   end
 
   # GET /kadaikanris/1 or /kadaikanris/1.json
