@@ -3,7 +3,8 @@ class KadaikanrisController < ApplicationController
 
   # GET /kadaikanris or /kadaikanris.json
   def index
-    @pagy, @kadaikanris = pagy(:offset, Kadaikanri.all)
+    @q = Kadaikanri.includes(:status).ransack(params[:q])
+    @pagy, @kadaikanris = pagy(@q.result)
   end
 
   # GET /kadaikanris/1 or /kadaikanris/1.json
