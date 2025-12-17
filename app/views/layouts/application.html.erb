@@ -24,7 +24,20 @@
 
   <body>
     <%== javascript_include_tag "pagy" %>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <header class="bg-gray-800 text-white">
+      <nav class="container mx-auto flex items-center justify-between px-5 py-4">
+        <%= link_to "課題管理", root_path, class: "text-xl font-bold" %>
+        <div class="flex items-center space-x-4">
+          <% if authenticated? %>
+            <%= button_to "ログアウト", session_path, method: :delete, class: "bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+          <% else %>
+            <%= link_to "ログイン", new_session_path, class: "hover:text-gray-300" %>
+          <% end %>
+        </div>
+      </nav>
+    </header>
+    
+    <main class="container mx-auto mt-7 px-5 flex">
       <%= yield %>
     </main>
     <script>

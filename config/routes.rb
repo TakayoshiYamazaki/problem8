@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :users
+  resource :session
+  resources :passwords, param: :token
   get 'kadaikanris/export_xlsx', to: 'kadaikanris#export_xlsx'
   resources :kadaikanris
   resources :statuses
@@ -14,4 +17,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root "kadaikanris#index"
 end

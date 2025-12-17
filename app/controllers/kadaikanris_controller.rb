@@ -1,4 +1,5 @@
 class KadaikanrisController < ApplicationController
+  allow_unauthenticated_access only: %i[ index ]
   before_action :set_kadaikanri, only: %i[ show edit update destroy ]
 
   def export_xlsx
