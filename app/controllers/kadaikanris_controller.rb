@@ -35,7 +35,7 @@ class KadaikanrisController < ApplicationController
 
   # GET /kadaikanris or /kadaikanris.json
   def index
-    @q = Kadaikanri.includes(:status).ransack(params[:q])
+    @q = Kadaikanri.includes(:status).order(updated_at: :desc).ransack(params[:q])
     @pagy, @kadaikanris = pagy(@q.result)
   end
 
