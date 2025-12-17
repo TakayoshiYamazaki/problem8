@@ -1,6 +1,7 @@
 <tr id="<%= dom_id kadaikanri %>">
   <td class="whitespace-nowrap py-4 pl-2 pr-2 text-sm font-medium text-gray-900 sm:pl-2 w-20"><%= kadaikanri.no %></td>
   <td class="whitespace-nowrap px-2 py-4 text-sm text-gray-500"><%= kadaikanri.entrydate %></td>
+  <td class="whitespace-nowrap px-2 py-4 text-sm text-gray-500"><%= kadaikanri.updated_at&.strftime('%Y-%m-%d') %></td>
   <td class="whitespace-nowrap px-2 py-4 text-sm text-gray-500"><%= kadaikanri.reporter %></td>
   <td class="py-4 px-2 text-sm text-gray-500 w-32"><%= kadaikanri.location %></td>
   <td class="py-4 px-2 text-sm text-gray-500 max-w-sm"><%= kadaikanri.content %></td>

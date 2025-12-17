@@ -13,7 +13,7 @@ class KadaikanrisController < ApplicationController
     worksheet.add_cell(0, 4, "内容")
     worksheet.add_cell(0, 5, "対応方針")
     worksheet.add_cell(0, 6, "ステータス")
-    worksheet.add_cell(0, 7, "作成日")
+    worksheet.add_cell(0, 7, "更新日")
 
     @kadaikanris.each_with_index do |kadaikanri, index|
       row = index + 1
@@ -24,7 +24,7 @@ class KadaikanrisController < ApplicationController
       worksheet.add_cell(row, 4, kadaikanri.content)
       worksheet.add_cell(row, 5, kadaikanri.plan)
       worksheet.add_cell(row, 6, kadaikanri.status.name)
-      worksheet.add_cell(row, 7, kadaikanri.created_at&.strftime("%Y/%m/%d %H:%M:%S"))
+      worksheet.add_cell(row, 7, kadaikanri.updated_at&.strftime("%Y/%m/%d %H:%M:%S"))
     end
 
     send_data workbook.stream.read,
@@ -57,7 +57,7 @@ class KadaikanrisController < ApplicationController
 
     respond_to do |format|
       if @kadaikanri.save
-        format.html { redirect_to @kadaikanri, notice: "Kadaikanri was successfully created." }
+        format.html { redirect_to @kadaikanri, notice: "課題が作成されました" }
         format.json { render :show, status: :created, location: @kadaikanri }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -70,7 +70,7 @@ class KadaikanrisController < ApplicationController
   def update
     respond_to do |format|
       if @kadaikanri.update(kadaikanri_params)
-        format.html { redirect_to @kadaikanri, notice: "Kadaikanri was successfully updated.", status: :see_other }
+        format.html { redirect_to @kadaikanri, notice: "課題が更新されました", status: :see_other }
         format.json { render :show, status: :ok, location: @kadaikanri }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -84,7 +84,7 @@ class KadaikanrisController < ApplicationController
     @kadaikanri.destroy!
 
     respond_to do |format|
-      format.html { redirect_to kadaikanris_path, notice: "Kadaikanri was successfully destroyed.", status: :see_other }
+      format.html { redirect_to kadaikanris_path, notice: "課題が削除されました", status: :see_other }
       format.json { head :no_content }
     end
   end
@@ -97,6 +97,6 @@ class KadaikanrisController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def kadaikanri_params
-      params.expect(kadaikanri: [ :no, :entrydate, :reporter, :location, :content, :plan, :status_id ])
+      params.expect(kadaikanri: [ :no, :entrydate, :reporter, :location, :content, :plan, :status_id, :updated_at ])
     end
 end
