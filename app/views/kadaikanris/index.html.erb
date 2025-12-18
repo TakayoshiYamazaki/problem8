@@ -2,21 +2,21 @@
 
 <div class="w-full">
   <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+    <p class="py-2 px-3 bg-green-50 dark:bg-green-900 mb-5 text-green-500 dark:text-green-400 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
   <% end %>
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-3xl">課題管理</h1>
     <div class="flex gap-2">
-      <%= link_to "新規作成", new_kadaikanri_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" if authenticated? %>
-      <%= link_to "Excel出力", kadaikanris_export_xlsx_path, class: "rounded-md px-3.5 py-2.5 bg-green-600 hover:bg-green-500 text-white block font-medium" if authenticated? %>
+      <%= link_to "新規作成", new_kadaikanri_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 dark:bg-blue-700 dark:hover:bg-blue-600 text-white block font-medium" if authenticated? %>
+      <%= link_to "Excel出力", kadaikanris_export_xlsx_path, class: "rounded-md px-3.5 py-2.5 bg-green-600 hover:bg-green-500 dark:bg-green-700 dark:hover:bg-green-600 text-white block font-medium" if authenticated? %>
     </div>
   </div>
 
   <div class="my-4">
     <%= search_form_for @q, class: "flex items-center gap-2" do |f| %>
-      <%= f.search_field :reporter_or_location_or_content_or_plan_cont, placeholder: "フリーワード検索", class: "rounded-md border-gray-300" %>
-      <%= f.submit "検索", class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
+      <%= f.search_field :reporter_or_location_or_content_or_plan_cont, placeholder: "フリーワード検索", class: "rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100" %>
+      <%= f.submit "検索", class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 dark:bg-blue-700 dark:hover:bg-blue-600 text-white font-medium cursor-pointer" %>
     <% end %>
   </div>
 
@@ -24,23 +24,23 @@
     <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg: -mx-8">
       <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
 	<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-	  <table class="min-w-full divide-y divide-gray-300">
-	    <thead class="bg-gray-50">
+	  <table class="min-w-full divide-y divide-gray-300 dark:divide-gray-700">
+	    <thead class="bg-gray-50 dark:bg-gray-800">
 	      <tr>
-		<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6 w-21"><%= sort_link(@q, :no, "番号") %></th>
-		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sort_link(@q, :entrydate, "登録日") %></th>
-		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sort_link(@q, :updated_at, "更新日") %></th>
-		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sort_link(@q, :reporter, "報告者") %></th>
-		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 w-32"><%= sort_link(@q, :location, "場所") %></th>
-		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">内容</th>
-		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">対応方針</th>
-		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"><%= sort_link(@q, :status_name, "状態") %></th>
+		<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 sm:pl-6 w-21"><%= sort_link(@q, :no, "番号") %></th>
+		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200"><%= sort_link(@q, :entrydate, "登録日") %></th>
+		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200"><%= sort_link(@q, :updated_at, "更新日") %></th>
+		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200"><%= sort_link(@q, :reporter, "報告者") %></th>
+		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200 w-32"><%= sort_link(@q, :location, "場所") %></th>
+		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200">内容</th>
+		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200">対応方針</th>
+		<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-gray-200"><%= sort_link(@q, :status_name, "状態") %></th>
 		<th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
 		  <span class="sr-only">操作</span>
 		</th>
 	      </tr>
 	    </thead>
-	    <tbody id="kadaikanris" class="divide-y divide-gray-200 bg-white">
+	    <tbody id="kadaikanris" class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900">
 	      <% if @kadaikanris.any? %>
                 <%= render @kadaikanris %>
 	      <% else %>

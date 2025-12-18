@@ -22,7 +22,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body style="background-color: #f9fcff;">
+  <body class="bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-200">
     <%== javascript_include_tag "pagy" %>
     <header data-controller="navbar"
             data-action="mouseenter->navbar#expand mouseleave->navbar#collapse"
@@ -34,6 +34,7 @@
         <div class="container mx-auto px-5 py-4 flex items-center justify-between">
           <%= link_to "課題管理", root_path, class: "text-xl font-bold" %>
           <div class="flex items-center space-x-4">
+
             <% if authenticated? %>
               <%= button_to "ログアウト", session_path, method: :delete, class: "bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
             <% else %>

@@ -1,6 +1,6 @@
 <%= form_with(model: kadaikanri, class: "contents") do |form| %>
   <% if kadaikanri.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+    <div id="error_explanation" class="bg-red-50 dark:bg-red-900 text-red-500 dark:text-red-300 px-3 py-2 font-medium rounded-md mt-3">
       <h2><%= pluralize(kadaikanri.errors.count, "error") %> prohibited this kadaikanri from being saved:</h2>
 
       <ul class="list-disc ml-6">
@@ -12,41 +12,41 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :番号 %>
-    <%= form.number_field :no, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": kadaikanri.errors[:no].none?, "border-red-400 focus:outline-red-600": kadaikanri.errors[:no].any?}] %>
+    <%= form.label :番号, class: "dark:text-gray-200" %>
+    <%= form.number_field :no, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600 dark:border-gray-600 dark:focus:outline-blue-500": kadaikanri.errors[:no].none?, "border-red-400 focus:outline-red-600 dark:border-red-500 dark:focus:outline-red-500": kadaikanri.errors[:no].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :登録日 %>
-    <%= form.date_field :entrydate, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": kadaikanri.errors[:entrydate].none?, "border-red-400 focus:outline-red-600": kadaikanri.errors[:entrydate].any?}] %>
+    <%= form.label :登録日, class: "dark:text-gray-200" %>
+    <%= form.date_field :entrydate, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600 dark:border-gray-600 dark:focus:outline-blue-500": kadaikanri.errors[:entrydate].none?, "border-red-400 focus:outline-red-600 dark:border-red-500 dark:focus:outline-red-500": kadaikanri.errors[:entrydate].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :報告者 %>
-    <%= form.text_field :reporter, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": kadaikanri.errors[:reporter].none?, "border-red-400 focus:outline-red-600": kadaikanri.errors[:reporter].any?}] %>
+    <%= form.label :報告者, class: "dark:text-gray-200" %>
+    <%= form.text_field :reporter, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600 dark:border-gray-600 dark:focus:outline-blue-500": kadaikanri.errors[:reporter].none?, "border-red-400 focus:outline-red-600 dark:border-red-500 dark:focus:outline-red-500": kadaikanri.errors[:reporter].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :場所 %>
-    <%= form.text_field :location, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": kadaikanri.errors[:location].none?, "border-red-400 focus:outline-red-600": kadaikanri.errors[:location].any?}] %>
+    <%= form.label :場所, class: "dark:text-gray-200" %>
+    <%= form.text_field :location, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600 dark:border-gray-600 dark:focus:outline-blue-500": kadaikanri.errors[:location].none?, "border-red-400 focus:outline-red-600 dark:border-red-500 dark:focus:outline-red-500": kadaikanri.errors[:location].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :内容 %>
-    <%= form.textarea :content, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": kadaikanri.errors[:content].none?, "border-red-400 focus:outline-red-600": kadaikanri.errors[:content].any?}] %>
+    <%= form.label :内容, class: "dark:text-gray-200" %>
+    <%= form.textarea :content, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600 dark:border-gray-600 dark:focus:outline-blue-500": kadaikanri.errors[:content].none?, "border-red-400 focus:outline-red-600 dark:border-red-500 dark:focus:outline-red-500": kadaikanri.errors[:content].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :対応方針 %>
-    <%= form.textarea :plan, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": kadaikanri.errors[:plan].none?, "border-red-400 focus:outline-red-600": kadaikanri.errors[:plan].any?}] %>
+    <%= form.label :対応方針, class: "dark:text-gray-200" %>
+    <%= form.textarea :plan, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600 dark:border-gray-600 dark:focus:outline-blue-500": kadaikanri.errors[:plan].none?, "border-red-400 focus:outline-red-600 dark:border-red-500 dark:focus:outline-red-500": kadaikanri.errors[:plan].any?}] %>
   </div>
 
   <div class="my-5">
-    <%= form.label :状態 %>
-    <%= form.collection_select :status_id, Status.all, :id, :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": kadaikanri.errors[:status_id].none?, "border-red-400 focus:outline-red-600": kadaikanri.errors[:status_id].any?}] %>
+    <%= form.label :状態, class: "dark:text-gray-200" %>
+    <%= form.collection_select :status_id, Status.all, :id, :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100", {"border-gray-400 focus:outline-blue-600 dark:border-gray-600 dark:focus:outline-blue-500": kadaikanri.errors[:status_id].none?, "border-red-400 focus:outline-red-600 dark:border-red-500 dark:focus:outline-red-500": kadaikanri.errors[:status_id].any?}] %>
   </div>
 
   <div class="inline">
-    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer mb-8" %>
+    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 dark:bg-blue-700 dark:hover:bg-blue-600 text-white font-medium cursor-pointer mb-8" %>
   </div>
 <% end %>
