@@ -14,6 +14,7 @@
 # Pagy.options[:jsonapi] = true           # Use JSON:API compliant URLs
 
 Pagy.options[:limit] = 5
+Pagy.options[:client_max_limit] = 100
 
 ############ JavaScript ####################################################################
 # See https://ddnexus.github.io/pagy/resources/javascript/ for details.
