@@ -51,9 +51,9 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  host: <%= ENV["DB_HOST"] %>
   primary: &primary_production
     <<: *default
+    host: <%= ENV["DB_HOST"] %>
     database: problem8_production
     username: problem8
     password: <%= ENV["PROBLEM8_DATABASE_PASSWORD"] %>
