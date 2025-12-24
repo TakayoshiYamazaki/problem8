@@ -55,8 +55,8 @@ production:
     <<: *default
     host: <%= ENV["DB_HOST"] %>
     database: problem8_production
-    username: problem8
-    password: <%= ENV["PROBLEM8_DATABASE_PASSWORD"] %>
+    username: root
+    password: <%= ENV["MYSQL_ROOT_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: problem8_production_cache
