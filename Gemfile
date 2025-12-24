@@ -68,3 +68,5 @@ end
 gem 'pagy'
 gem 'ransack'
 gem 'rubyXL'
+gem 'thinreports', '>= 0.12'
+gem 'thinreports-rails', '~> 0.5.0'

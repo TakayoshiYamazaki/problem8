@@ -3,8 +3,10 @@ class KadaikanrisController < ApplicationController
   before_action :set_kadaikanri, only: %i[ show edit update destroy ]
 
   def export_xlsx
-    @kadaikanris = Kadaikanri.all # Or use @q.result if you want to export filtered data
-
+    # @kadaikanris = Kadaikanri.all # Or use @q.result if you want to export filtered data
+    @q = Kadaikanri.includes(:status).order(updated_at: :desc).ransack(params[:q])
+    @kadaikanris = @q.result
+    
     workbook = RubyXL::Workbook.new
     worksheet = workbook[0]
     worksheet.add_cell(0, 0, "番号")
@@ -33,10 +35,16 @@ class KadaikanrisController < ApplicationController
               filename: "kadaikanris.xlsx"
   end
 
-  # GET /kadaikanris or /kadaikanris.json
+  # GET /kadaikanris or /kadaikanris.json or /kadaikanris.pdf
   def index
     @q = Kadaikanri.includes(:status).order(updated_at: :desc).ransack(params[:q])
     @pagy, @kadaikanris = pagy(@q.result)
+
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf { send_data KadaikanrisReport.new(@kadaikanris).generate, filename: "kadaikanris.pdf", type: :pdf }
+    end
   end
 
   # GET /kadaikanris/1 or /kadaikanris/1.json
@@ -98,6 +106,6 @@ class KadaikanrisController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def kadaikanri_params
-      params.expect(kadaikanri: [ :no, :entrydate, :reporter, :location, :content, :plan, :status_id, :updated_at ])
+      params.expect(kadaikanri: [ :no, :entrydate, :reporter, :location, :content, :plan, :status_id, :updated_at, :page, :limit])
     end
 end

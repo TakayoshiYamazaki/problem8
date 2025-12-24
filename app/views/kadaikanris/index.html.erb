@@ -9,7 +9,11 @@
     <h1 class="font-bold text-3xl">課題管理</h1>
     <div class="flex gap-2">
       <%= link_to "新規作成", new_kadaikanri_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 dark:bg-blue-700 dark:hover:bg-blue-600 text-white block font-medium" if authenticated? %>
-      <%= link_to "Excel出力", kadaikanris_export_xlsx_path, class: "rounded-md px-3.5 py-2.5 bg-green-600 hover:bg-green-500 dark:bg-green-700 dark:hover:bg-green-600 text-white block font-medium" if authenticated? %>
+      <% if params[:q] %>
+        <%= link_to "Excel出力", kadaikanris_export_xlsx_path(q: params.require(:q).permit(:reporter_or_location_or_content_or_plan_or_status_name_cont)), class: "rounded-md px-3.5 py-2.5 bg-green-600 hover:bg-green-500 dark:bg-green-700 dark:hover:bg-green-600 text-white block font-medium" if authenticated? %>
+      <% else %>
+        <%= link_to "Excel出力", kadaikanris_export_xlsx_path, class: "rounded-md px-3.5 py-2.5 bg-green-600 hover:bg-green-500 dark:bg-green-700 dark:hover:bg-green-600 text-white block font-medium" if authenticated? %>
+      <% end %>
     </div>
   </div>
 
@@ -62,9 +66,25 @@
       </div>
     </div>
   </div>
-  <div class="pt-2 mb-6 flex">
-    <%# Render navigation bar helpers with various types and styles %>
-    <%== @pagy.series_nav %>
-    <div class="pl-2"><%== @pagy.info_tag %></div>
+  <div class="flex justify-between items-center">
+    <div class="pt-2 mb-6 flex">
+      <%# Render navigation bar helpers with various types and styles %>
+      <%== @pagy.series_nav %>
+      <div class="pl-2"><%== @pagy.info_tag %></div>
+    </div>
+
+    <% if params[:q] %>
+      <% if params[:page] %>
+        <div><%= link_to 'print', kadaikanris_path(q: params.require(:q).permit(:reporter_or_location_or_content_or_plan_or_status_name_cont), page: params[:page], limit: params[:limit], format: 'pdf') %></div>
+      <% else %>
+        <div><%= link_to 'print', kadaikanris_path(q: params.require(:q).permit(:reporter_or_location_or_content_or_plan_or_status_name_cont), format: 'pdf') %></div>
+      <% end %>
+    <% else %>
+      <% if params[:page] %>
+        <div><%= link_to 'print', kadaikanris_path(page: params[:page], limit: params[:limit], format: 'pdf') %></div>
+      <% else %>
+        <div><%= link_to 'print', kadaikanris_path(format: 'pdf') %></div>
+      <% end %>
+    <% end %>
   </div>
 </div>
