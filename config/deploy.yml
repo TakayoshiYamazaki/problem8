@@ -7,7 +7,10 @@ image: starbose/problem8
 # Deploy to these servers.
 servers:
   web:
-    - 172.31.0.251
+    hosts:
+      - 172.31.0.251
+    options:
+      publish: "3000:80"
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -17,9 +20,9 @@ servers:
 # Remove this section when using multiple web servers and ensure you terminate SSL at your load balancer.
 #
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
-proxy:
-  ssl: false
-  host: problem8
+# proxy:
+#   ssl: false
+#   host: problem8
 
 # Credentials for your image host.
 registry:
@@ -90,6 +93,8 @@ builder:
 # Use a different ssh user than root
 # ssh:
 #   user: app
+ssh:
+  user: egmainex
 
 # Use accessory services (secrets come from .kamal/secrets).
 # accessories:
