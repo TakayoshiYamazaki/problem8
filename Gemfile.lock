@@ -310,6 +310,10 @@ GEM
       rubyzip (>= 3.2.2)
     rubyzip (3.2.2)
     securerandom (0.4.1)
+    seed_dump (3.4.0)
+      activerecord (>= 4)
+      activesupport (>= 4)
+      seed_dump
     selenium-webdriver (4.39.0)
       base64 (~> 0.2)
       logger (~> 1.4)
@@ -425,6 +429,7 @@ DEPENDENCIES
   ransack
   rubocop-rails-omakase
   rubyXL
+  seed_dump (~> 3.4)
   selenium-webdriver
   solid_cable
   solid_cache
@@ -551,6 +556,7 @@ CHECKSUMS
   rubyXL (3.4.35) sha256=20e7d958951009ab448137870f7ca4054de163e2db42a481343776df397b3f1c
   rubyzip (3.2.2) sha256=c0ed99385f0625415c8f05bcae33fe649ed2952894a95ff8b08f26ca57ea5b3c
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
+  seed_dump (3.4.0) sha256=3a978a2f74ffeb53cf2680bca1263f92b54c835bd7014e9e2ae491cbe8deaf8b
   selenium-webdriver (4.39.0) sha256=984a1e63d39472eaf286bac3c6f1822fa7eea6eed9c07a66ce7b3bc5417ba826
   solid_cable (3.0.12) sha256=a168a54731a455d5627af48d8441ea3b554b8c1f6e6cd6074109de493e6b0460
   solid_cache (1.0.10) sha256=bc05a2fb3ac78a6f43cbb5946679cf9db67dd30d22939ededc385cb93e120d41

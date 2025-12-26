@@ -67,9 +67,10 @@ aliases:
 
 # Use a persistent storage volume for sqlite database files and local Active Storage files.
 # Recommended to change this to a mounted volume path that is backed up off server.
+# volumes:
+#   - "problem8_storage:/rails/storage"
 volumes:
-  - "problem8_storage:/rails/storage"
-
+  - "problem8:/rails"
 
 # Bridge fingerprinted assets, like JS and CSS, between versions to avoid
 # hitting 404 on in-flight requests. Combines all files from new and old
@@ -108,9 +109,9 @@ accessories:
         MYSQL_ROOT_HOST: '%'
       secret:
         - MYSQL_ROOT_PASSWORD
-    files:
-      - config/mysql/production.cnf:/etc/mysql/my.cnf
-      - db/production.sql:/docker-entrypoint-initdb.d/setup.sql
+    # files:
+    #   - config/mysql/production.cnf:/etc/mysql/my.cnf
+    #   - db/production.sql:/docker-entrypoint-initdb.d/setup.sql
     directories:
       - data:/var/lib/mysql
 #   redis:
