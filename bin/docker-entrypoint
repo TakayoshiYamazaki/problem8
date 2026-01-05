@@ -8,6 +8,14 @@ fi
 
 # If running the rails server then create or migrate existing database
 if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
+  # Wait for database to be ready
+  echo "Waiting for database to be ready..."
+  until mysqladmin ping -h "$DB_HOST" --silent; do
+    echo -n "."
+    sleep 1
+  done
+  echo "Database is ready."
+
   ./bin/rails db:prepare
 fi
 
