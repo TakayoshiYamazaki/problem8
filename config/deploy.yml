@@ -8,7 +8,7 @@ image: starbose/problem8
 servers:
   web:
     hosts:
-      - 172.31.0.251
+      - 172.31.1.97
     options:
       publish: "3000:80"
   # job:
