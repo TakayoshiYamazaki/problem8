@@ -11,8 +11,7 @@ servers:
       - 172.31.1.97
     options:
       publish: "3000:80"
-    healthcheck:
-      cmd: "exit 0"
+      health-cmd: "exit 0"
   # job:
   #   hosts:
   #     - 192.168.0.1
