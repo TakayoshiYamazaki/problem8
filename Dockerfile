@@ -70,4 +70,4 @@ USER 1000:1000
 # Start server via Thruster by default, this can be overwritten at runtime
 EXPOSE 80
 # HEALTHCHECK --start-period=5s --interval=5s --timeout=3s --retries=5 CMD curl -f http://localhost/up || exit 1
-CMD ["sleep", "infinity"]
+CMD ["tail", "-f", "/dev/null"]
