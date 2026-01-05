@@ -101,7 +101,7 @@ ssh:
 accessories:
   db:
     image: mysql:8.0
-    host: 172.31.0.251
+    host: 172.31.1.97
     # Change to 3306 to expose port to the world instead of just local network.
     port: "127.0.0.1:3306:3306"
     env:
