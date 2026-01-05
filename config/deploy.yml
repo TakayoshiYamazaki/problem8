@@ -1,6 +1,9 @@
 # Name of your application. Used to uniquely configure containers.
 service: problem8
 
+healthcheck:
+  cmd: "exit 0"
+
 # Name of the container image.
 image: starbose/problem8
 
