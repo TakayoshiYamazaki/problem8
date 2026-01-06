@@ -65,9 +65,8 @@ RUN groupadd --system --gid 1000 rails && \
 USER 1000:1000
 
 # Entrypoint prepares the database.
-# ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start server via Thruster by default, this can be overwritten at runtime
 EXPOSE 80
-# HEALTHCHECK --start-period=5s --interval=5s --timeout=3s --retries=5 CMD curl -f http://localhost/up || exit 1
-CMD ["tail", "-f", "/dev/null"]
+CMD ["./bin/thrust", "./bin/rails", "server"]
