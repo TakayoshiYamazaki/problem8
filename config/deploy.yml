@@ -113,7 +113,7 @@ accessories:
     #   - config/mysql/production.cnf:/etc/mysql/my.cnf
     #   - db/production.sql:/docker-entrypoint-initdb.d/setup.sql
     volumes:
-      - "/var/lib/docker/volumes/problem8-db:/var/lib/mysql"
+      - "/var/lib/docker/volumes/problem8_db:/var/lib/mysql"
 #   redis:
 #     image: redis:7.0
 #     host: 192.168.0.2
