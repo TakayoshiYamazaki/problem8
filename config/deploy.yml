@@ -110,12 +110,11 @@ accessories:
         MYSQL_ROOT_HOST: '%'
       secret:
         - MYSQL_ROOT_PASSWORD
-        - MYSQL_DATABASE
     # files:
     #   - config/mysql/production.cnf:/etc/mysql/my.cnf
     #   - db/production.sql:/docker-entrypoint-initdb.d/setup.sql
-    files:
-      - db/init.sql:/docker-entrypoint-initdb.d/setup.sql
+    # files:
+    #   - db/init.sql:/docker-entrypoint-initdb.d/setup.sql
     volumes:
       - "/var/lib/docker/volumes/problem8_db/_data:/var/lib/mysql"
 #   redis:
