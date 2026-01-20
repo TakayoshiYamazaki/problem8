@@ -8,6 +8,12 @@ fi
 
 # If running the rails server then create or migrate existing database
 if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
+  echo "Waiting for database to be ready..."
+  for i in {1..30}; do
+    ./bin/rails db:version && break
+    echo "Database not ready, waiting..."
+    sleep 1
+  done
   ./bin/rails db:prepare
 fi
 
