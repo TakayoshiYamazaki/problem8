@@ -14,7 +14,7 @@ namespace :data do
     puts "kadaikanris table truncated."
 
     # ActiveRecord::Base.connection.execute(sql_file.read)
-    `mysql -u root -ppassword root --default-character-set=utf8mb4 < #{sql_file}`
+    `mysql -u root -ppassword #{ENV['MYSQL_ROOT_PASSWORD']} --default-character-set=utf8mb4 < #{sql_file}`
     puts "problem_kadaikanrisa.sql imported successfully into kadaikanris table."
   end
 
