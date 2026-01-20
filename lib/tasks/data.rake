@@ -15,8 +15,13 @@ namespace :data do
 
     # ActiveRecord::Base.connection.execute(sql_file.read)
     puts "root password=#{ENV['MYSQL_ROOT_PASSWORD']}"
-    `mysql -u root -ppassword #{ENV['MYSQL_ROOT_PASSWORD']} --default-character-set=utf8mb4 < #{sql_file}`
-    puts "problem_kadaikanrisa.sql imported successfully into kadaikanris table."
+    #`mysql -u root -ppassword #{ENV['MYSQL_ROOT_PASSWORD']} --default-character-set=utf8mb4 < #{sql_file}`
+    require 'open3'
+    o, e, s = Open3.capture3("mysql -u root -ppassword #{ENV['MYSQL_ROOT_PASSWORD']} --default-character-set=utf8mb4 < #{sql_file}")
+    puts "o: #{o}"
+    puts "e: #{e}"
+    puts "s: #{s}"
+    puts "problem_kadaikanris.sql imported successfully into kadaikanris table."
   end
 
 end
