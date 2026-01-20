@@ -121,7 +121,7 @@ accessories:
     volumes:
       - "/var/lib/docker/volumes/problem8_db/_data:/var/lib/mysql"
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      cmd: "mysqladmin ping -h localhost"
 #   redis:
 #     image: redis:7.0
 #     host: 192.168.0.2
