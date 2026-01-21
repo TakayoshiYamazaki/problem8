@@ -11,6 +11,7 @@ servers:
       - 172.31.1.97
     options:
       publish: "3500:80"
+      network-alias: problem8-web-app
   utility:
     hosts:
       - 172.31.1.97
